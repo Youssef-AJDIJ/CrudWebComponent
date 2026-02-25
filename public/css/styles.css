@@ -1,0 +1,174 @@
+/* =============================================
+   CSS Variables & Reset
+   ============================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --blue-bg: #1565c0;
+  --blue-dark: #0d47a1;
+  --blue-deeper: #1a237e;
+  --card-bg: #cfd8dc;
+  --card-border: #1565c0;
+  --text-dark: #1a1a2e;
+  --amber: #f57f17;
+  --yellow: #f9d71c;
+  --red: #e53935;
+  --white: #ffffff;
+  --header-h: 70px;
+  --radius: 6px;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --transition: 0.2s ease;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--blue-bg);
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================
+   Header
+   ============================================= */
+.app-header {
+  height: var(--header-h);
+  background: var(--blue-bg);
+  border-bottom: 4px solid var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo-icon {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
+}
+
+.menu-btn {
+  background: var(--blue-deeper);
+  border: none;
+  border-radius: var(--radius);
+  width: 44px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+  transition: background var(--transition);
+}
+.menu-btn:hover {
+  background: #283593;
+}
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 3px;
+  background: var(--white);
+  border-radius: 2px;
+}
+
+/* =============================================
+   Main Layout
+   ============================================= */
+.app-main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 0;
+  min-height: calc(100vh - var(--header-h));
+}
+
+.list-section {
+  padding: 12px 8px;
+  overflow-y: auto;
+  max-height: calc(100vh - var(--header-h));
+}
+
+.form-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 60px;
+}
+
+/* =============================================
+   user-card Web Component styles (host)
+   ============================================= */
+/* Exposed via CSS custom properties / part */
+
+/* =============================================
+   Toast
+   ============================================= */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: #212121;
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-size: 0.95rem;
+  z-index: 9999;
+  opacity: 0;
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+.toast.success {
+  background: #2e7d32;
+}
+.toast.error {
+  background: #c62828;
+}
+
+/* =============================================
+   Scrollbar
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--blue-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blue-deeper);
+  border-radius: 3px;
+}
+
+/* =============================================
+   Responsive
+   ============================================= */
+@media (max-width: 768px) {
+  .app-main {
+    grid-template-columns: 1fr;
+  }
+  .list-section {
+    max-height: none;
+  }
+  .form-section {
+    padding: 24px 16px;
+  }
+}
