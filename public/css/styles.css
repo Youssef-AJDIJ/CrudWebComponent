@@ -172,3 +172,127 @@ body {
     padding: 24px 16px;
   }
 }
+
+
+/* ── Estilos del Modal (DIALOG) ──────────────── */
+
+/* 1. Estilo del contenedor principal del dialog */
+.modal {
+  border: none;                             /* Quita el borde nativo feo */
+  border-radius: 12px;                      /* Bordes redondeados modernos */
+  padding: 0;                               /* Limpiamos padding nativo */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);  /* Sombra suave para dar profundidad */
+  width: 90%;                               /* Ancho responsivo */
+  max-width: 450px;    
+  margin: auto;
+  position: absolute;
+
+  top: 0;                
+  left: 0;
+  transform: translate(-50%, -50%); 
+  
+  /* Animación de entrada */
+  animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+/* 2. Estilo del fondo (backdrop) que cubre la pantalla */
+.modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);     /* Fondo oscuro semitransparente */
+  backdrop-filter: blur(4px);              /* Efecto de desenfoque borroso (muy moderno) */
+  
+  /* Animación de entrada del fondo */
+  animation: backdropFadeIn 0.3s ease-out forwards;
+}
+
+/* 3. Contenedor interno para el padding y diseño */
+.modal-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                                /* Espaciado entre elementos */
+  text-align: center;                      /* Centrar texto */
+}
+
+/* Título */
+.modal-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;                              /* Color de texto principal */
+  font-weight: 600;
+}
+
+/* Párrafo descriptivo */
+.modal-content p {
+  margin: 0;
+  color: #666;                              /* Color de texto secundario */
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* 4. Contenedor de botones acciones */
+.modal-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;                                /* Espacio entre botones */
+  justify-content: center;                  /* Centrar botones */
+}
+
+/* Estilo base para todos los botones dentro del modal */
+.modal-actions button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;                /* Transición suave en hover */
+  min-width: 120px;                         /* Ancho mínimo para consistencia */
+}
+
+/* Botón Cancelar */
+#cancel-delete {
+  background-color: #f3f4f6;                /* Gris muy claro */
+  color: #4b5563;                           /* Texto gris oscuro */
+}
+
+#cancel-delete:hover {
+  background-color: #e5e7eb;                /* Un gris un poco más oscuro */
+}
+
+/* Botón Eliminar (Peligro) */
+.btn-danger {
+  background-color: #ef4444;                /* Rojo vibrante */
+  color: white;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;                /* Rojo más oscuro */
+  transform: translateY(-1px);              /* Pequeño salto hacia arriba */
+}
+
+/* Pequeño efecto al hacer click */
+.modal-actions button:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+/* 5. Animaciones Keyframes */
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95); /* Empieza arriba y más pequeño */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);       /* Termina en su posición natural */
+  }
+}
+
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

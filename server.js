@@ -21,7 +21,8 @@ app.use("/api/users", userRoutes);
 
 // Fallback: serve index.html for any non-API route
 app.get("/{*splat}", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  // res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.redirect("/");
 });
 
 // Connect DB and start server
